@@ -44,3 +44,25 @@ Atuar como um Arquiteto de Software Sênior especializado em engenharia reversa,
    - Permitir integração livre com chaves de API externas (Gemini, Groq, etc.) no modelo BYOK (Bring Your Own Key).
    - Implementar recursos avançados de histórico local, visualização em tempo real e geração automatizada de código.
 4. **Formato de Resposta:** Sempre retornar os códigos organizados por caminho de arquivo (ex: `=== src/App.js ===`) para facilitar a leitura e a aplicação no projeto.
+{
+  "name": "meu-gerador-de-apps",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@google/genai": "^0.1.1",
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "lucide-react": "^0.378.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "postcss": "^8.4.0",
+    "autoprefixer": "^10.4.0"
+  }
+}
