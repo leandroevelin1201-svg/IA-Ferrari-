@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { GoogleGenAI } from '@google/genai';
+import JarvisVoice from './components/JarvisVoice';
 
 export default function App() {
   const [apiKey, setApiKey] = useState('');
@@ -32,25 +33,30 @@ export default function App() {
     <div className="min-h-screen bg-gray-900 text-white p-6">
       <div className="max-w-4xl mx-auto space-y-6">
         <header className="border-b border-gray-800 pb-4">
-          <h1 className="text-2xl font-bold">IA-Ferrari - Criador de Aplicativos</h1>
+          <h1 className="text-2xl font-bold">IA-Ferrari - Assistente & Criador</h1>
           <p className="text-gray-400 text-sm">Arquitetura própria com Bring Your Own Key (BYOK)</p>
         </header>
 
+        {/* Campo da Chave de API */}
+        <div className="bg-gray-800 p-4 rounded-lg">
+          <label className="block text-sm font-medium mb-1">Chave de API do Gemini:</label>
+          <input
+            type="password"
+            value={apiKey}
+            onChange={(e) => setApiKey(e.target.value)}
+            placeholder="Cole sua chave aqui..."
+            className="w-full p-2 bg-gray-900 border border-gray-700 rounded text-white"
+          />
+        </div>
+
+        {/* Módulo de Voz estilo JARVIS */}
+        <JarvisVoice apiKey={apiKey} />
+
+        {/* Área de Texto / Geração de Código */}
         <div className="space-y-4 bg-gray-800 p-4 rounded-lg">
           <div>
-            <label className="block text-sm font-medium mb-1">Chave de API do Gemini:</label>
-            <input 
-              type="password"
-              value={apiKey}
-              onChange={(e) => setApiKey(e.target.value)}
-              placeholder="Cole sua chave aqui..."
-              className="w-full p-2 bg-gray-900 border border-gray-700 rounded text-white"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium mb-1">O que você quer criar ou modificar?</label>
-            <textarea 
+            <label className="block text-sm font-medium mb-1">Comando por Texto ou Código:</label>
+            <textarea
               rows="4"
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
@@ -59,7 +65,7 @@ export default function App() {
             />
           </div>
 
-          <button 
+          <button
             onClick={handleGenerate}
             disabled={loading}
             className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded font-medium disabled:opacity-50"
